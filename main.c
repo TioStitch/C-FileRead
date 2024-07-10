@@ -7,7 +7,6 @@ void write(char document_name[], char text[]) {
 
     if (!file) {
         perror("Algo deu errado ao tentar escrever neste documento!");
-        free(file);
         EXIT_FAILURE;
     }
 
@@ -21,7 +20,6 @@ void append(char document_name[], char text[]) {
 
     if (!file) {
         perror("Algo deu errado ao tentar incrementar textos neste documento!");
-        free(file);
         EXIT_FAILURE;
     }
 
@@ -40,7 +38,6 @@ char * read(char document_name[]) {
 
     if (!file) {
         perror("Algo deu errado ao tentar ler o conteúdo neste documento!");
-        free(file);
         EXIT_FAILURE;
     }
 
