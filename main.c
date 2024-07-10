@@ -3,15 +3,13 @@
 #include <stdlib.h>
 
 void write(char document_name[], char text[]) {
-    FILE *file;
+    FILE *file = fopen(document_name, "w");
 
-    if (!fopen(document_name, "w")) {
+    if (!file) {
         perror("Algo deu errado ao tentar escrever neste documento!");
         free(file);
         EXIT_FAILURE;
     }
-
-    file = fopen(document_name, "w");
 
     fprintf(file, text);
     fclose(file);
@@ -19,15 +17,13 @@ void write(char document_name[], char text[]) {
 
 void append(char document_name[], char text[]) {
 
-    FILE *file;
+    FILE *file = fopen(document_name, "a");
 
-    if (!fopen(document_name, "a")) {
+    if (!file) {
         perror("Algo deu errado ao tentar incrementar textos neste documento!");
         free(file);
         EXIT_FAILURE;
     }
-
-    file = fopen(document_name, "a");
 
     fprintf(file, text);
     fclose(file);
@@ -35,14 +31,14 @@ void append(char document_name[], char text[]) {
 
 char * read(char document_name[]) {
 
-    FILE *file;
+    FILE *file = fopen(document_name, "r");
 
     if (!malloc(100 * sizeof(char))) {
         perror("Algo deu errado ao tentar alocar memória para esta função!");
         EXIT_FAILURE;
     }
 
-    if (!fopen(document_name, "r")) {
+    if (!file) {
         perror("Algo deu errado ao tentar ler o conteúdo neste documento!");
         free(file);
         EXIT_FAILURE;
